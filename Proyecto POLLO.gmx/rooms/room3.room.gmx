@@ -16,8 +16,8 @@
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1382</w>
-    <h>744</h>
+    <w>1024</w>
+    <h>600</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -27,8 +27,8 @@
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>1</page>
-    <xoffset>-346</xoffset>
-    <yoffset>-70</yoffset>
+    <xoffset>-134</xoffset>
+    <yoffset>-130</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -54,7 +54,7 @@
     <instance objName="objSolid" x="-64" y="608" name="inst_24FCDE50" locked="0" code="" scaleX="34" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="0" y="-64" name="inst_88F850A6" locked="0" code="" scaleX="1.03225803375244" scaleY="23" colour="4294967295" rotation="0"/>
     <instance objName="objSolid" x="864" y="-96" name="inst_DA13E174" locked="0" code="" scaleX="2.06451606750488" scaleY="22" colour="4294967295" rotation="0"/>
-    <instance objName="objPlayer" x="288" y="416" name="inst_B1DBA7F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayer" x="320" y="256" name="inst_B1DBA7F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
