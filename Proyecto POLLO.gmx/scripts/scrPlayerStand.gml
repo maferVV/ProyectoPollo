@@ -1,6 +1,7 @@
 if (state_new) {
     hsp = 0;
     vsp = 0;
+    canJump = 1;
     //sprite_index = sprPlayerRun
 }
 

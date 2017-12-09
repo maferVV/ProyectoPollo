@@ -7,11 +7,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\sprPlayerMask</sprite>
+    <sprite>sprites\sprHands</sprite>
     <sprite>sprites\sprSolid</sprite>
-    <sprite>sprites\sprClouds</sprite>
-    <sprite>sprites\sprite3</sprite>
-    <sprite>sprites\sprite4</sprite>
-    <sprite>sprites\sprite5</sprite>
+    <sprite>sprites\sprFeet</sprite>
+    <sprite>sprites\sprPlatform</sprite>
     <sprite>sprites\sprite6</sprite>
     <sprite>sprites\sprite7</sprite>
     <sprite>sprites\sprite8</sprite>
@@ -53,7 +52,7 @@
       <object>objects\objSleepManager</object>
       <object>objects\objBackgroundColorManager</object>
     </objects>
-    <object>objects\object5</object>
+    <object>objects\objPlatform</object>
     <object>objects\object6</object>
     <object>objects\object7</object>
     <object>objects\object8</object>
