@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>intensity = 0;
+            <string>x = 20 + view_wview[0] / 2;
+y = 20 + view_hview[0] / 2;
+intensity = 0;
 shake_x = 0;
 shake_y = 0;
 </string>
@@ -50,16 +52,16 @@ shake_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>intensity -= 2;
+            <string>intensity -= 0.2;
 intensity = max(0, intensity);
 
 shake_x = round(random(intensity) + random(-intensity))
 shake_y = round(random(intensity) + random(-intensity))
 
-if instance_exists(objPlayer){
-    x = objPlayer.x + shake_x
-    y = objPlayer.y + shake_y
-}
+
+x += shake_x
+y += shake_y
+
 </string>
           </argument>
         </arguments>

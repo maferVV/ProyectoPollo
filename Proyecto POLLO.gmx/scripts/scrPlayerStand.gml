@@ -21,3 +21,6 @@ if(jump_input && canJump) {
 if ( !place_meeting(x,y+1,objSolid) && !place_meeting(x,y+1,objPlatform) ) { //if we are in the air
     state_switch("Fall");
 }
+
+//Switch to hurt
+scrGetHurt(objPlayer2);

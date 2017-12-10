@@ -11,7 +11,8 @@
   <colour>255</colour>
   <showcolour>-1</showcolour>
   <code>global.sleep = 0;
-room_goto_next();</code>
+room_goto_next();
+global.g_dir = 0;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -28,8 +29,8 @@ room_goto_next();</code>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>1</page>
-    <xoffset>-98</xoffset>
-    <yoffset>-184</yoffset>
+    <xoffset>-66</xoffset>
+    <yoffset>-289</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

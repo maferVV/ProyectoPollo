@@ -10,21 +10,31 @@
     <sound>sound\sndGrab</sound>
     <sound>sound\sndBatHit</sound>
     <sound>sound\sndBat</sound>
+    <sound>sound\sndSplat1</sound>
+    <sound>sound\sndThrowable</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\sprPlayerHead</sprite>
+    <sprite>sprites\sprThrowable</sprite>
     <sprite>sprites\sprPlayerMask</sprite>
-    <sprite>sprites\sprBat</sprite>
-    <sprite>sprites\sprShotgun</sprite>
-    <sprite>sprites\sprHands</sprite>
-    <sprite>sprites\sprSolid</sprite>
-    <sprite>sprites\sprFeet</sprite>
-    <sprite>sprites\sprPlatform</sprite>
-    <sprite>sprites\sprite6</sprite>
-    <sprite>sprites\sprite7</sprite>
-    <sprite>sprites\sprite8</sprite>
-    <sprite>sprites\sprite9</sprite>
     <sprite>sprites\sprItem</sprite>
+    <sprites name="Player parts">
+      <sprite>sprites\sprPlayerHead</sprite>
+      <sprite>sprites\sprHands</sprite>
+      <sprite>sprites\sprPlayerBody</sprite>
+      <sprite>sprites\sprFeet</sprite>
+    </sprites>
+    <sprites name="Solids">
+      <sprite>sprites\sprPlatform</sprite>
+      <sprite>sprites\sprSolid</sprite>
+    </sprites>
+    <sprites name="Hazards">
+      <sprite>sprites\sprBullet</sprite>
+      <sprite>sprites\sprShotgun</sprite>
+      <sprite>sprites\sprBulletHit</sprite>
+      <sprite>sprites\sprBat</sprite>
+      <sprite>sprites\sprPlayerDie</sprite>
+      <sprite>sprites\sprGrabThrowable</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -49,25 +59,33 @@
       <script>scripts\scrPlayerHurt.gml</script>
       <script>scripts\scrPlayerFall.gml</script>
       <script>scripts\scrPlayerDie.gml</script>
+      <script>scripts\scrGetHurt.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntDefault</font>
   </fonts>
   <objects name="objects">
-    <object>objects\objWeapon</object>
-    <object>objects\objPlayer</object>
-    <object>objects\objSolid</object>
     <objects name="Managers">
       <object>objects\objCamera</object>
       <object>objects\objSleepManager</object>
       <object>objects\objBackgroundColorManager</object>
     </objects>
-    <object>objects\objPlatform</object>
-    <object>objects\objItem</object>
-    <object>objects\object7</object>
-    <object>objects\object8</object>
-    <object>objects\object9</object>
+    <objects name="Hazards">
+      <object>objects\objHumanBullet</object>
+      <object>objects\objBullet</object>
+      <object>objects\objItem</object>
+      <object>objects\objThrowable</object>
+    </objects>
+    <objects name="Players">
+      <object>objects\objPlayer</object>
+      <object>objects\objWeapon</object>
+      <object>objects\objPlayer2</object>
+    </objects>
+    <objects name="Solids">
+      <object>objects\objPlatform</object>
+      <object>objects\objSolid</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmInitialize</room>

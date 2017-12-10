@@ -20,3 +20,7 @@ if (vsp > 0) {
 
 // Switch to attack
 // pending
+
+
+//Switch to hurt
+scrGetHurt(objPlayer2);

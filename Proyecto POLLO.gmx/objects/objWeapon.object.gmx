@@ -32,6 +32,7 @@ canAct = 1;
 use = 1;
 SHELLS = 2;
 BAT_SWINGS = 10;
+THROWABLE = 1;
 </string>
           </argument>
         </arguments>
@@ -78,8 +79,16 @@ BAT_SWINGS = 10;
           <argument>
             <kind>1</kind>
             <string>///following and flip
-x = lerp(x,objPlayer.x,0.45)
-y = lerp(y,objPlayer.y,0.45)
+if(canAct)
+{
+    x = lerp(x,objPlayer.x,0.45)
+    y = lerp(y,objPlayer.y,0.45)
+}
+else
+{
+    x = objPlayer.x;
+    y = objPlayer.y;
+}
 
 //flip
 if(objPlayer.hsp != 0)
@@ -113,10 +122,13 @@ if ( (objPlayer.action_input) &amp;&amp; canAct )
     canAct = 0;
     x = objPlayer.x
     y = objPlayer.y
+    //HANDS
     if(weapon = 0)
     {
+        image_speed = 0.58;
         with instance_place(x, y, objItem)
         {
+            audio_play_sound(sndGrab, 20, false);
             if(image_index == 0) //bat
             {
                 other.weapon = 1;
@@ -131,18 +143,37 @@ if ( (objPlayer.action_input) &amp;&amp; canAct )
             }
             instance_destroy();
         }
+        else with instance_place(x, y, objThrowable)
+        {
+            audio_play_sound(sndGrab, 20, false);
+            audio_play_sound(sndThrowable, 20, false);
+            other.weapon = 4;
+            other.sprite_index = sprGrabThrowable;
+            other.use = other.THROWABLE;
+            instance_destroy();
+        }
         alarm[0] = 10;
     }
+    //BAT
     else if (weapon = 1)
     {
+        audio_play_sound(sndBat, 10, false);
         image_speed = 1;
         alarm[0] = 20;
         use--;
     }
+    //SHOTGUN
     else if (weapon = 2)
     {
         audio_play_sound(sndShotgun, 100, false);
         audio_play_sound(sndShotgunE, 90, false);
+        for(index = 0; index &lt; 5; index++)
+        {
+            global.g_dir = random(40) - 20
+            if(image_xscale &lt; 0)
+                global.g_dir += 180;
+            instance_create(x, y, objBullet);
+        }
         image_speed = 1.5;
         alarm[0] = 30;
         use--;
