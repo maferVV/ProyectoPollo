@@ -34,13 +34,15 @@ left_input = 0;
 right_input = 0;
 jump_input = 0;
 jump_held_input = 0;
+action_input = 0;
 
 run_speed = 15;
-jump_height = 10;
+jump_height = 20;
 jump_precision = 0.5;
-grav = 1.2;
+grav = 1;
 canJump = 1;
-canCollideWithPlatform = 1;
+
+i = 0;
 </string>
           </argument>
         </arguments>
@@ -69,11 +71,35 @@ state_create("Stand",scrPlayerStand);
 state_create("Jump",scrPlayerJump);
 state_create("Run",scrPlayerRun);
 state_create("Fall",scrPlayerFall);
-state_create("Swing",scrPlayerSwing);
+state_create("Action",scrPlayerAction);
 state_create("Hurt",scrPlayerHurt);
 state_create("Die",scrPlayerDie);
 
 state_init("Stand");
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///--- Weapon
+
+instance_create(x, y, objWeapon)
+
 </string>
           </argument>
         </arguments>
@@ -151,6 +177,8 @@ down_input = keyboard_check(ord("S"));
 jump_input = keyboard_check_pressed(ord("W")); // The jump input
 jump_release_input = keyboard_check(ord("W")); // The jump release input (This is used to allow controlled jump height)
 jump_held_input = keyboard_check(ord("W"));
+
+action_input = keyboard_check(ord("Q"));
 </string>
           </argument>
         </arguments>
@@ -193,13 +221,12 @@ state_execute();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///---- Physics.
+            <string>///---- Collisions
 
-hspd = hsp
-//Horizontal Collision
-if (place_meeting(x+hspd,y,objSolid))  //If in our position + what we are about to move forward there is a wall (are we about to collide horizontally?)
+hspd = hsp;
+if (place_meeting(x+hspd,y,objSolid))
 {
-    while(!place_meeting(x+sign(hspd),y,objSolid))     //! at the beginning means NOT  //sign returns either 1 or -1
+    while(!place_meeting(x+sign(hspd),y,objSolid))
     {
         x += sign(hspd);
     }
@@ -207,11 +234,10 @@ if (place_meeting(x+hspd,y,objSolid))  //If in our position + what we are about 
     hsp = 0;
         
 }
-x += hspd;                             //THIS is the line that actually moves the object   += means to keep adding
+x += hspd;
 
 
-vspd = vsp
-//Vertical Collision
+vspd = vsp;
 if (place_meeting(x,y+vspd,objSolid))
 {
     while(!place_meeting(x,y+sign(vspd),objSolid))
@@ -228,7 +254,47 @@ if (place_meeting(x,y+vspd,objSolid))
         state_switch("Stand");
     }
 }
-y += vspd;                            //THIS is the line that actually moves the object
+else if ( place_meeting(x, y + vspd, objPlatform) &amp;&amp; (vspd &gt; 0)  &amp;&amp; (state_name == "Fall") )
+{
+    while(!place_meeting(x,y+sign(vspd),objPlatform))
+    {
+        canJump = 1;
+        y += sign(vspd);
+    }
+    vspd = 0;
+    vsp = 0;
+    if place_meeting(x,y+1,objPlatform)
+    {
+        state_switch("Stand");
+    }
+}
+y += vspd;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///--- Flipper
+
+if(hsp != 0)
+{
+    image_xscale = sign(hsp);
+}
 </string>
           </argument>
         </arguments>
@@ -251,7 +317,7 @@ y += vspd;                            //THIS is the line that actually moves the
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fntDefault);
+            <string>/*draw_set_font(fntDefault);
 draw_set_color(c_black);
 draw_text(40,20,
               "State: "+string(state_name)
@@ -259,9 +325,10 @@ draw_text(40,20,
               //+"#hsp[0]: "+string(hsp[0])
               //+"#hsp[1]: "+string(hsp[1])
               +"#hspd: "+string(hspd)
+              +"#vspd: "+string(vspd)
          );
          
-draw_set_color(c_white);
+draw_set_color(c_white);*/
 </string>
           </argument>
         </arguments>
@@ -284,9 +351,20 @@ draw_set_color(c_white);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-draw_self();
+            <string>i+=0.25;
+var wav1 = sin(i);
+var wav2 = cos(i);
 
+draw_sprite_ext(sprite_index,
+                image_index,
+                x,
+                y + wav1,
+                image_xscale,
+                image_yscale,
+                image_angle,
+                c_white,
+                image_alpha);
+                
 draw_sprite_ext(sprFeet,
                 image_index,
                 x,
@@ -297,10 +375,10 @@ draw_sprite_ext(sprFeet,
                 c_white,
                 image_alpha);
 
-draw_sprite_ext(sprHands,
+draw_sprite_ext(sprPlayerHead,
                 image_index,
                 x,
-                y,
+                y + wav2,
                 image_xscale,
                 image_yscale,
                 image_angle,

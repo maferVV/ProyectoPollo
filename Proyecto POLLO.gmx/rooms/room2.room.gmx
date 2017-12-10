@@ -27,8 +27,8 @@
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>0</page>
-    <xoffset>-145</xoffset>
-    <yoffset>-90</yoffset>
+    <xoffset>-67</xoffset>
+    <yoffset>67</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -56,6 +56,13 @@
     <instance objName="objSolid" x="864" y="-96" name="inst_DA13E174" locked="0" code="" scaleX="2.06451606750488" scaleY="22" colour="4294967295" rotation="0"/>
     <instance objName="objPlayer" x="288" y="416" name="inst_B1DBA7F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlatform" x="832" y="448" name="inst_3C211552" locked="0" code="" scaleX="16.5" scaleY="-0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="800" y="384" name="inst_2F260D58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="704" y="384" name="inst_1B0EF96D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="608" y="384" name="inst_4B465E10" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="704" y="544" name="inst_14A3C75C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="576" y="544" name="inst_8E9A56E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="480" y="544" name="inst_C943145A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objItem" x="128" y="544" name="inst_1C80035A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -4,9 +4,18 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndShotgun</sound>
+    <sound>sound\sndShotgunE</sound>
+    <sound>sound\sndGrab</sound>
+    <sound>sound\sndBatHit</sound>
+    <sound>sound\sndBat</sound>
+  </sounds>
   <sprites name="sprites">
+    <sprite>sprites\sprPlayerHead</sprite>
     <sprite>sprites\sprPlayerMask</sprite>
+    <sprite>sprites\sprBat</sprite>
+    <sprite>sprites\sprShotgun</sprite>
     <sprite>sprites\sprHands</sprite>
     <sprite>sprites\sprSolid</sprite>
     <sprite>sprites\sprFeet</sprite>
@@ -15,6 +24,7 @@
     <sprite>sprites\sprite7</sprite>
     <sprite>sprites\sprite8</sprite>
     <sprite>sprites\sprite9</sprite>
+    <sprite>sprites\sprItem</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -35,7 +45,7 @@
       <script>scripts\scrPlayerStand.gml</script>
       <script>scripts\scrPlayerRun.gml</script>
       <script>scripts\scrPlayerJump.gml</script>
-      <script>scripts\scrPlayerSwing.gml</script>
+      <script>scripts\scrPlayerAction.gml</script>
       <script>scripts\scrPlayerHurt.gml</script>
       <script>scripts\scrPlayerFall.gml</script>
       <script>scripts\scrPlayerDie.gml</script>
@@ -45,6 +55,7 @@
     <font>fonts\fntDefault</font>
   </fonts>
   <objects name="objects">
+    <object>objects\objWeapon</object>
     <object>objects\objPlayer</object>
     <object>objects\objSolid</object>
     <objects name="Managers">
@@ -53,7 +64,7 @@
       <object>objects\objBackgroundColorManager</object>
     </objects>
     <object>objects\objPlatform</object>
-    <object>objects\object6</object>
+    <object>objects\objItem</object>
     <object>objects\object7</object>
     <object>objects\object8</object>
     <object>objects\object9</object>

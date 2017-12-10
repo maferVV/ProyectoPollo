@@ -18,6 +18,6 @@ if(jump_input && canJump) {
 }
 
 //switch to fall
-if !(place_meeting(x,y+1,objSolid)) { //if we are in the air
+if ( !place_meeting(x,y+1,objSolid) && !place_meeting(x,y+1,objPlatform) ) { //if we are in the air
     state_switch("Fall");
 }

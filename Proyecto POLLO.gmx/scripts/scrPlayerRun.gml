@@ -15,4 +15,8 @@ if (hsp = 0){
     state_switch("Stand");
 }
 
+//switch to fall
+if ( !place_meeting(x,y+1,objSolid) && !place_meeting(x,y+1,objPlatform) ) { //if we are in the air
+    state_switch("Fall");
+}
 
