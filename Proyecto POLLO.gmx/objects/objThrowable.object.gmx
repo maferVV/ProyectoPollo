@@ -7,7 +7,122 @@
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_speed = 0;
+image_index = global.g_throwableIndex;
+isMissile = global.g_isThrowableMissile;
+dir = global.g_dir;
+spd = 30;
+grav = 1.6;
+
+hspd = lengthdir_x(spd, dir);
+vspd = lengthdir_y(spd, dir);
+
+bounce = 1;
+min_bounce_spd = 5;
+bounces = 0;
+max_bounces = 1;
+TIME_UNTIL_STOP = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>isMissile = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (isMissile)
+{
+    y += grav;
+    /// Movement
+    
+    // Wall collision
+    if (place_meeting(x+hspd,y,objSolid))  //If in our position + what we are about to move forward there is a wall (are we about to collide horizontally?)
+    {
+        while(!place_meeting(x+sign(hspd),y,objSolid))     //! at the beginning means NOT  //sign returns either 1 or -1
+        {
+            x += sign(hspd);
+        }
+        hspd = -(hspd)*bounce;
+        bounces += 1;
+    }
+    x += hspd;      
+    
+    if (place_meeting(x, y+vspd, objSolid)){
+        while(!place_meeting(x, y+sign(vspd), objSolid))
+        {
+            y += sign(vspd)
+        }
+        vspd = -(vspd)*bounce;
+        bounces += 1;
+    }
+    y += vspd;
+}
+
+if (bounces &gt;= max_bounces)
+{
+    alarm[0] = TIME_UNTIL_STOP;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

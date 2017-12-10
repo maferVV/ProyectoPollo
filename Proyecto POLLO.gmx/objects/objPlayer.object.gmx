@@ -52,9 +52,9 @@ max_bounces = 5;
 
 i = 0;
 
-drawHead = random(100) mod sprite_get_width(sprPlayerHead);
-drawBody = random(100) mod sprite_get_width(sprPlayerBody);
-drawFeet = random(100) mod sprite_get_width(sprPlayerHead);
+drawHead = random(100) mod sprite_get_number(sprPlayerHead);
+drawBody = random(100) mod sprite_get_number(sprPlayerBody);
+drawFeet = random(100) mod sprite_get_number(sprPlayerHead);
 </string>
           </argument>
         </arguments>
@@ -190,7 +190,7 @@ jump_input = keyboard_check_pressed(ord("W")); // The jump input
 jump_release_input = keyboard_check(ord("W")); // The jump release input (This is used to allow controlled jump height)
 jump_held_input = keyboard_check(ord("W"));
 
-action_input = keyboard_check(ord("Q"));
+action_input = keyboard_check_pressed(ord("Q"));
 </string>
           </argument>
         </arguments>
@@ -367,7 +367,7 @@ if(hsp != 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fntDefault);
+            <string>/*draw_set_font(fntDefault);
 draw_set_color(c_black);
 draw_text(40,20,
               "State: "+string(state_name)
@@ -378,7 +378,7 @@ draw_text(40,20,
               //+"#vspd: "+string(vspd)
          );
          
-draw_set_color(c_white);
+draw_set_color(c_white);*/
 </string>
           </argument>
         </arguments>

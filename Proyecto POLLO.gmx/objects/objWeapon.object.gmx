@@ -30,9 +30,13 @@ image_speed = 0;
 canAct = 1;
 
 use = 1;
+
+//Character shoots one more
 SHELLS = 2;
 BAT_SWINGS = 10;
-THROWABLE = 1;
+THROWABLE = 0;
+
+THROWABLE_ADDED_SPACE = 40; //20 pixeles arriba de mi jupa
 </string>
           </argument>
         </arguments>
@@ -143,23 +147,24 @@ if ( (objPlayer.action_input) &amp;&amp; canAct )
             }
             instance_destroy();
         }
-        else with instance_place(x, y, objThrowable)
+        with instance_place(x, y, objThrowable) //throwable
         {
             audio_play_sound(sndGrab, 20, false);
             audio_play_sound(sndThrowable, 20, false);
-            other.weapon = 4;
+            other.weapon = 3;
             other.sprite_index = sprGrabThrowable;
+            global.g_throwableIndex = image_index;
             other.use = other.THROWABLE;
             instance_destroy();
         }
-        alarm[0] = 10;
+        alarm[0] = 20;
     }
     //BAT
     else if (weapon = 1)
     {
         audio_play_sound(sndBat, 10, false);
         image_speed = 1;
-        alarm[0] = 20;
+        alarm[0] = 30;
         use--;
     }
     //SHOTGUN
@@ -175,7 +180,18 @@ if ( (objPlayer.action_input) &amp;&amp; canAct )
             instance_create(x, y, objBullet);
         }
         image_speed = 1.5;
-        alarm[0] = 30;
+        alarm[0] = 35;
+        use--;
+    }
+    //THROWABLE
+    else if (weapon = 3)
+    {
+        //audio_play_sound();
+        global.g_throwableIndex = image_index;
+        global.g_isThrowableMissile = 1;
+        global.g_dir = image_xscale;
+        instance_create(x, y - THROWABLE_ADDED_SPACE, objThrowable);
+        alarm[0] = 5;
         use--;
     }
 }
@@ -237,13 +253,49 @@ draw_set_color(c_black);
 draw_text(40,20,
               "use: "+string(use)
               
-              //+"#hsp[0]: "+string(hsp[0])
+              +"#index: "+string(sprite_index)
               //+"#hsp[1]: "+string(hsp[1])
               //+"#hspd: "+string(hspd)
               //+"#vspd: "+string(vspd)
          );
          
 draw_set_color(c_white);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(weapon == 3)
+{
+    draw_sprite_ext(sprThrowable,
+                    global.g_throwableIndex,
+                    x,
+                    y - THROWABLE_ADDED_SPACE,
+                    image_xscale,
+                    image_yscale,
+                    image_angle,
+                    merge_colour(c_white, c_gray, 0.25),
+                    image_alpha);
+}
+
+draw_self();
 </string>
           </argument>
         </arguments>
